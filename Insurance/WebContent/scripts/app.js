@@ -95,7 +95,19 @@ angular
     })
     .state('dashboard.register',{
         templateUrl:'views/pages/registration.html',
-        url:'/register'
+        url:'/register',
+        controller: 'RegistrationCtrl',
+        resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:[
+                'scripts/controllers/registration.js',
+                'scripts/directives/validations/confirmPass.js'
+                ]
+              })
+            }
+        }
     })
     .state('dashboard.customer',{
         templateUrl:'views/pages/customer.html',
