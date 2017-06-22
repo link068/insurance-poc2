@@ -11,10 +11,11 @@ angular.module('sbAdminApp')
     	return {
   		restrict:'A',
   		require: '?ngModel',
-  		link: function(scope, elem, attrs, ngModel) {
-  			ngModel.$validators.myPwdInvalid = function(modelValue, viewValue) {
-  				return viewValue === scope.$eval(attrs.confirmPass);
-  	      };
+  		link: function (scope, elm, attrs, ctl) {
+  	      scope.$watch(attrs['confirmPass'], function (errorMsg) {
+  	        elm[0].setCustomValidity(errorMsg);
+  	        ctl.$setValidity('confirmPass', errorMsg ? false : true);
+  	      });
   		}	
     };
 });

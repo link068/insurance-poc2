@@ -26,14 +26,9 @@
 	                                <input class="form-control" placeholder="Password" name="password" type="password" ng-model="password" required ng-minlength="6">
 	                                <label>Confirm Password</label>
 	                                <span style="color:red" ng-show="myForm.cpassword.$dirty && myForm.cpassword.$invalid">
-  									<span ng-show="myForm.cpassword.$error.required">Password Confirmation is Required.</span></span>
- 									
-	                                <input class="form-control" ng-class="{ notvalid: myForm.cpassword.$invalid }" placeholder="Confirm Password" name="cpassword" type="password" ng-model="cpassword" confirm-password="{{password}}" required>
-									<!--  ng-class="{ notvalid: myForm.cpassword.$invalid }"-->
-	                                <div class="help-block" ng-messages="myForm.cpassword.$error"
-             							ng-show="myForm.cpassword.$error.$dirty || myForm.cpassword.$touched">
-            							<div ng-messages="myPwdInvalid">Password do not match</div>
-        							</div>
+  									<span ng-show="myForm.cpassword.$error.required">Password Confirmation is Required.</span>
+  									<span style="color:red" ng-show="myForm.cpassword.$invalid">Passwords Must Match</span></span>
+	                                <input class="form-control" placeholder="Confirm Password" name="cpassword" type="password" ng-model="cpassword" confirm-pass="cpassword != password ? 'Passwords don\'t match' : ''" required>
 <!-- 	                                <label>Mobile Number</label> -->
 <!-- 	                                <span style="color:red" ng-show="myForm.mobile.$dirty && myForm.mobile.$invalid"> -->
 <!--   									<span ng-show="myForm.mobile.$error.required">Mobile Number is Required.</span></span> -->
@@ -63,8 +58,8 @@
 <!--   									<span ng-show="myForm.education.$error.required">Education is Required.</span></span> -->
 <!-- 									<input class="form-control" placeholder="Education" name="education" type="text" ng-model="education" required> -->
                                 </div>
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Submit Registration "ng-disabled="myForm.email.$dirty && myForm.email.$invalid 
-                                || myForm.name.$dirty && myForm.name.$invalid || myForm.password.$dirty && myForm.password.$invalid || myForm.cpassword.$dirty && myForm.cpassword.$invalid"> 
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Submit Registration "ng-disabled="myForm.email.$pristine && myForm.email.$invalid 
+                                || myForm.name.$pristine && myForm.name.$invalid || myForm.password.$pristine && myForm.password.$invalid || myForm.cpassword.$pristine && myForm.cpassword.$invalid"> 
                             </fieldset>
                         </form>
                     </div>
