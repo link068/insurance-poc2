@@ -72,26 +72,26 @@ angular
             }
         }
     })
-      .state('dashboard.home',{
-        url:'/home',
-        controller: 'MainCtrl',
-        templateUrl:'views/dashboard/home.html',
-        resolve: {
-          loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'sbAdminApp',
-              files:[
-              'scripts/controllers/main.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
+    .state('dashboard.home',{
+      url:'/home',
+      controller: 'MainCtrl',
+      templateUrl:'views/dashboard/home.html',
+      resolve: {
+        loadMyFiles:function($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name:'sbAdminApp',
+            files:[
+            'scripts/controllers/main.js',
+            'scripts/directives/notifications/notifications.js',
+            'scripts/directives/dashboard/stats/stats.js'
+            ]
+          })
         }
-      })
-      .state('dashboard.login',{
-        templateUrl:'views/pages/login.html',
-        url:'/login'
+      }
+    })
+    .state('dashboard.login',{
+      templateUrl:'views/pages/login.html',
+      url:'/login'
     })
     .state('dashboard.register',{
         templateUrl:'views/pages/registration.html',
